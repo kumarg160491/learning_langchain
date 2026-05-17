@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 import os
 
 # Load environment variables
@@ -8,9 +8,6 @@ load_dotenv()
 
 
 def main():
-
-    # Check API key
-    print(os.getenv("OPENAI_API_KEY"))
 
     information = """
     Elon Musk is a businessman known for Tesla, SpaceX, X (Twitter),
@@ -30,9 +27,9 @@ def main():
         template=summary_template
     )
 
-    # OpenAI LLM
-    llm = ChatOpenAI(
-        model="gpt-4o-mini",
+    # Groq LLM
+    llm = ChatGroq(
+        model="openai/gpt-oss-120b",
         temperature=0
     )
 
